@@ -1,0 +1,5 @@
+Hello, Hi I'm Guru. I'm from Bangalore.
+I work as a Big Data Engineer at Rakuten.
+Rakuten is a Japanese based e-commerce company.
+I love Hadoop, Spark, Scala and Kafka.
+Spark has made My day and Career. Thanks to DVS. Thanks to all.
