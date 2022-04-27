@@ -1,4 +1,5 @@
-from player import HumanPlayer, RandomComputerPlayer
+from player import GeniusComputerPlayer, HumanPlayer, RandomComputerPlayer
+import time
 
 class TicTacToe:
     def __init__(self):
@@ -24,7 +25,7 @@ class TicTacToe:
     def empty_squares(self):
         return ' ' in self.board
 
-    def num_empty_sqares(self):
+    def num_empty_squares(self):
         return self.board.count(' ')
 
     def make_move(self, square, letter):
@@ -77,25 +78,41 @@ def play(game, x_player, o_player, print_game=True):
 
 
         if game.make_move(square, letter):
+            
             if print_game == True:
                 print(f"{letter} makes a move to square {square}")
                 game.print_board()
                 print(' ')
 
-                if game.current_winner:
+            if game.current_winner:
                     if print_game:
                         print(f"{letter} wins the game!!!")
                     return letter
 
-                letter = 'O' if letter == 'X' else 'X'  
+            letter = 'O' if letter == 'X' else 'X'  
+
+        if print_game:
+            time.sleep(0.8)
 
     if print_game:
         print("it's a tie...")
 
         
 if __name__=='__main__':
-    x_player = HumanPlayer('X')
-    o_player = RandomComputerPlayer('O')
-    t = TicTacToe()
-    play(t, x_player, o_player, print_game=True)
+
+    x_wins = 0
+    o_wins = 0
+    ties = 0
+    for _ in range(1000):
+        x_player = RandomComputerPlayer('X')
+        o_player = GeniusComputerPlayer('O')
+        t = TicTacToe()
+        winner = play(t, x_player, o_player, print_game=False)
+        if winner == 'X':
+            x_wins += 1
+        elif winner == 'O':
+            o_wins +=1
+        else:
+            ties +=1            
+    print(f"X Player wins {x_wins} times, O Playes wins {o_wins} times, and {ties} ties")
 
