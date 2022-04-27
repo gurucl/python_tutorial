@@ -1,14 +1,11 @@
 
 
 
-
-
 def factorial(num, result=1):
     if(num<=1):
         return result
     else:
         return factorial(num-1, num * result)
-
 
 
 if __name__ == '__main__':
